@@ -15,8 +15,12 @@ var Person = Backbone.Model.extend({// на жаргоне это класс
        name: 'Dima',
        age: 23,
        job: 'web-developer'
-   }
+   },
+
+    walk:function(){
+        return this.get('name')+ ' is walking'
+    }
 
 });
 
-var person = new Person;
+// var person = new Person;
