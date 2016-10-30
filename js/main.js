@@ -1,43 +1,11 @@
-var TodoView = Backbone.View.extend({
-    tagName: 'li',
-// Кэширование функции шаблона для отдельной задачи.
-    todoTpl: _.template( $('#item-template').html() ),
-    events: {
-        'dblclick label': 'edit',
-        'keypress .edit': 'updateOnEnter',
-        'blur .edit': 'close'
-    },
-// Вызывается при первом создании представления
-    initialize: function () {
-        this.$el = $('#todo');
-// Позже мы рассмотрим вызов
-// this.listenTo(someCollection, 'all', this.render);
-// но вы можете запустить этот пример прямо сейчас,
-// вызвав метод TodoView.render();
-    },
-// Повторное отображение заголовков задач.
-    render: function() {
-        this.$el.html( this.todoTpl( this.model.toJSON() ) );
-// Здесь $el - это ссылка на элемент jQuery,
-// связанный с представлением, todoTpl - ссылка
-// на Underscore-шаблон,а toJSON() возвращает объект,
-// содержащий атрибуты модели.
-// В совокупности этот оператор заменяет HTML-код
-// DOM-элемента на результат создания
-// экземпляра шаблона с атрибутами модели.
-        this.input = this.$('.edit');
-        return this;
-    },
-    edit: function() {
-// выполняется при двойном щелчке по ярлыку задачи
-    },
-    close: function() {
-// выполняется, когда задача теряет фокус
-    },
-    updateOnEnter: function( e ) {
-// выполняется при каждом нажатии клавиши в режиме редактирования задачи,
-// но мы будем ждать нажатия enter, чтобы перейти в действие
-    }
-});
-// создание представления задачи
-var todoView = new TodoView({model: myTodo});
+var Person = function(config){
+    this.name = config.name;
+    this.age = config.age;
+    this.job = config.job;
+};
+
+Person.prototype.walk = function(){
+  return this.name + ' is walking';
+};
+
+var nick = new Person({name: 'Nick', age:'24',job:'Front-end-developer'});
